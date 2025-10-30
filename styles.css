@@ -12,7 +12,7 @@
   height: 120px;
 
   /* PNG'yi arka plan yap */
-  background-image: url("/İmg/TS.png"); /* kendi yolunu yaz */
+  background-image: url("TS.png"); /* kendi yolunu yaz */
   background-size: contain;   /* taşmadan sığdır */
   background-position: center;
   background-repeat: no-repeat;
