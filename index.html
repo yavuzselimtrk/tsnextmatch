@@ -1,0 +1,126 @@
+:root{
+  --bordo:#5A0E1E;
+  --mavi:#004E8A;
+  --mavi-2:#0074CC;
+  --vurgu:#7CC7FF;
+  --beyaz:#fff;
+  --cam-siyah:rgba(0,0,0,.7);
+}
+.player-icon{
+  /* boyut verelim */
+  width: 120px; 
+  height: 120px;
+
+  /* PNG'yi arka plan yap */
+  background-image: url("/İmg/TS.png"); /* kendi yolunu yaz */
+  background-size: contain;   /* taşmadan sığdır */
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* mevcut efektin varsa bırak, yoksa istersen ekle */
+  filter: drop-shadow(0 0 20px rgba(0,78,138,.8));
+  animation: bounce 2s infinite;
+}
+
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+
+body{
+  font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+  background:linear-gradient(135deg, var(--bordo) 0%, var(--mavi) 50%, var(--bordo) 100%);
+  min-height:100vh; display:flex; align-items:center; justify-content:center;
+  color:var(--beyaz); padding:20px; position:relative; overflow-x:hidden;
+}
+
+.stars-background{position:fixed; inset:0; z-index:0; overflow:hidden}
+.star{position:absolute; width:3px; height:3px; background:#fff; border-radius:50%; animation:twinkle 3s infinite}
+@keyframes twinkle{0%,100%{opacity:.3}50%{opacity:1}}
+
+.container{
+  background:var(--cam-siyah);
+  backdrop-filter:blur(15px);
+  border-radius:30px;
+  padding:28px clamp(18px,3vw,50px);
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
+  max-width:1100px; width:100%;
+  text-align:center; border:3px solid rgba(0,78,138,.5);
+  position:relative; z-index:1;
+}
+
+.header{margin-bottom:20px}
+.logo-container{display:flex; justify-content:center; align-items:center; gap:24px; margin-bottom:16px; flex-wrap:wrap}
+.player-icon{font-size:80px; animation:bounce 2s infinite; filter:drop-shadow(0 0 20px rgba(0,78,138,.8))}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.stars{font-size:44px; animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{transform:scale(1); filter:drop-shadow(0 0 10px rgba(0,78,138,.8))} 50%{transform:scale(1.08); filter:drop-shadow(0 0 20px rgba(0,78,138,1))}}
+h1{
+  font-size:clamp(26px,4vw,40px);
+  margin:.2rem 0 .4rem;
+  text-shadow:3px 3px 6px rgba(0,0,0,.5);
+  background:linear-gradient(45deg, var(--mavi), var(--mavi-2), var(--mavi));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-weight:800;
+}
+.subtitle{font-size:clamp(14px,2.2vw,18px); color:var(--vurgu); margin:0 auto 12px}
+
+.filters{
+  display:flex; gap:12px; flex-wrap:wrap; align-items:flex-end; justify-content:center;
+  margin:10px 0 8px;
+}
+.filter-group{display:flex; flex-direction:column; gap:6px; min-width:160px}
+.filter-group label{font-size:.9rem; opacity:.85}
+.filter-group select, .filter-group input{
+  background:rgba(255,255,255,.08); color:#fff; border:1px solid rgba(255,255,255,.2);
+  padding:10px 12px; border-radius:10px; outline:none;
+}
+
+.countdown{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:22px 0;
+}
+.time-box{
+  background:linear-gradient(135deg, rgba(0,78,138,.2), rgba(90,14,30,.2));
+  padding:18px 10px; border-radius:14px; border:2px solid rgba(0,78,138,.5); transition:.2s;
+}
+.time-box:hover{transform:translateY(-3px); border-color:var(--vurgu)}
+.time-value{font-size:clamp(24px,4vw,36px); font-weight:800; color:var(--vurgu); line-height:1}
+.time-label{font-size:.95rem; margin-top:6px}
+
+.match-info{
+  background:linear-gradient(135deg, rgba(0,78,138,.15), rgba(90,14,30,.15));
+  padding:20px; border-radius:18px; border:2px solid rgba(0,78,138,.4); margin-top:10px;
+}
+.match-info h3{color:var(--vurgu); font-size:1.3rem; margin:.2rem 0 .7rem}
+.match-details{font-size:1.1rem; margin:.3rem 0}
+.competition{
+  display:inline-block; background:linear-gradient(135deg, var(--mavi), var(--mavi-2));
+  color:#fff; padding:8px 18px; border-radius:20px; font-size:.95rem; margin-top:10px; font-weight:700
+}
+
+/* CANLI SKOR özel stiller */
+.live-box{
+  background:linear-gradient(135deg, #b31217, #e52d27);
+  border:3px solid rgba(255,255,255,.35);
+}
+.live-badge{
+  display:inline-block; background:#ffebee; color:#c62828;
+  font-weight:800; padding:6px 12px; border-radius:999px; margin-left:8px;
+}
+.scoreline{font-size:2rem; font-weight:800; margin:8px 0 4px}
+
+.next-matches{margin-top:24px; padding:20px; background:rgba(0,0,0,.3); border-radius:16px; border:2px solid rgba(0,78,138,.3); text-align:left}
+.next-matches h2{text-align:left; margin:0 0 12px; color:var(--vurgu); font-size:1.3rem}
+
+.matches-list{display:grid; gap:10px}
+.match-item{
+  background:rgba(0,78,138,.08); padding:14px; border-radius:12px; border-left:5px solid var(--vurgu);
+  display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap;
+}
+.match-text{display:flex; flex-direction:column; gap:2px}
+.match-opponents{font-weight:700}
+.match-meta{font-size:.92rem; opacity:.9}
+
+.footer{margin-top:18px; opacity:.8; font-size:.85rem; text-align:center}
+
+@media (max-width:720px){
+  .countdown{grid-template-columns:repeat(2,1fr)}
+}
